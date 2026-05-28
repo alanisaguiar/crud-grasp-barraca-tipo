@@ -1,0 +1,33 @@
+<div style="font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 16px;">
+
+  <h1>Sistema de Feira — Barracas</h1>
+  <p style="color: #666;">Teste de conexão com o backend.</p>
+
+  <button (click)="carregar()" style="padding: 8px 16px; cursor: pointer;">
+    Recarregar tipos
+  </button>
+
+  <hr style="margin: 24px 0;">
+
+  <div *ngIf="carregando">Carregando...</div>
+
+  <div *ngIf="erro" style="color: red; padding: 12px; background: #fee; border-radius: 4px;">
+    {{ erro }}
+  </div>
+
+  <div *ngIf="!carregando && !erro">
+    <h2>Tipos de barraca ({{ tipos.length }})</h2>
+
+    <p *ngIf="tipos.length === 0" style="color: #999;">
+      Nenhum tipo cadastrado ainda. Use o Postman ou o requests.http para criar alguns.
+    </p>
+
+    <ul>
+      <li *ngFor="let t of tipos">
+        <strong>#{{ t.id }}</strong> — {{ t.nome }}
+        <span *ngIf="t.descricao" style="color: #666;"> ({{ t.descricao }})</span>
+      </li>
+    </ul>
+  </div>
+
+</div>
