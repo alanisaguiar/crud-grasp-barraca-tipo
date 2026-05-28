@@ -1,0 +1,77 @@
+### ===== TIPOS DE BARRACA =====
+
+### 1. Listar tipos (deve vir lista vazia)
+GET http://localhost:8080/api/tipos-barraca
+
+### 2. Criar primeiro tipo
+POST http://localhost:8080/api/tipos-barraca
+Content-Type: application/json
+
+{
+  "nome": "Alimentação",
+  "descricao": "Barracas de comida e bebida"
+}
+
+### 3. Criar segundo tipo
+POST http://localhost:8080/api/tipos-barraca
+Content-Type: application/json
+
+{
+  "nome": "Artesanato",
+  "descricao": "Artesanato local"
+}
+
+### 4. Listar tipos (agora com 2)
+GET http://localhost:8080/api/tipos-barraca
+
+### 5. Buscar tipo por ID
+GET http://localhost:8080/api/tipos-barraca/1
+
+### 6. Tentar criar tipo com nome duplicado (deve falhar — regra de negócio)
+POST http://localhost:8080/api/tipos-barraca
+Content-Type: application/json
+
+{
+  "nome": "Alimentação",
+  "descricao": "Tentativa duplicada"
+}
+
+
+### ===== BARRACAS =====
+
+### 7. Listar barracas (vazia)
+GET http://localhost:8080/api/barracas
+
+### 8. Criar barraca
+POST http://localhost:8080/api/barracas
+Content-Type: application/json
+
+{
+  "nome": "Açaí da Tia",
+  "descricao": "Açaí natural de tigela",
+  "ativo": true,
+  "tipoBarracaId": 1
+}
+
+### 9. Criar outra barraca
+POST http://localhost:8080/api/barracas
+Content-Type: application/json
+
+{
+  "nome": "Caldo de Cana",
+  "descricao": "Caldo geladinho",
+  "ativo": true,
+  "tipoBarracaId": 1
+}
+
+### 10. Listar barracas (com 2)
+GET http://localhost:8080/api/barracas
+
+### 11. Tentar deletar tipo em uso (deve falhar — regra mais importante!)
+DELETE http://localhost:8080/api/tipos-barraca/1
+
+### 12. Deletar uma barraca
+DELETE http://localhost:8080/api/barracas/1
+
+### 13. Listar (agora 1 barraca só)
+GET http://localhost:8080/api/barracas
