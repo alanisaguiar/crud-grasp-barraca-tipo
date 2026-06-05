@@ -1,0 +1,51 @@
+<div class="container">
+  <header class="header">
+    <h2>Barracas</h2>
+    <a routerLink="/barracas/nova" class="btn btn-primary">+ Nova barraca</a>
+  </header>
+
+  <div *ngIf="mensagemSucesso" class="alert alert-success">
+    {{ mensagemSucesso }}
+  </div>
+
+  <div *ngIf="mensagemErro" class="alert alert-error">
+    {{ mensagemErro }}
+  </div>
+
+  <div *ngIf="carregando" class="loading">Carregando...</div>
+
+  <table *ngIf="!carregando && barracas.length > 0" class="tabela">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Tipo</th>
+        <th>Status</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let barraca of barracas">
+        <td>{{ barraca.id }}</td>
+        <td>{{ barraca.nome }}</td>
+        <td>{{ barraca.descricao || '—' }}</td>
+        <td>{{ barraca.tipoBarraca?.nome || '—' }}</td>
+        <td>
+          <span [class.ativo]="barraca.ativo" [class.inativo]="!barraca.ativo">
+            {{ barraca.ativo ? 'Ativo' : 'Inativo' }}
+          </span>
+        </td>
+        <td>
+          <button (click)="remover(barraca)" class="btn btn-danger">
+            Remover
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="!carregando && barracas.length === 0" class="vazio">
+    Nenhuma barraca cadastrada.
+  </p>
+</div>

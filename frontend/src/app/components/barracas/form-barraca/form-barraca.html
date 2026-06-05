@@ -1,0 +1,90 @@
+<div class="container">
+  <header class="header">
+    <h2>Nova Barraca</h2>
+  </header>
+
+  <div *ngIf="mensagemErro" class="alert alert-error">
+    {{ mensagemErro }}
+  </div>
+
+  <form (ngSubmit)="salvar()" #form="ngForm" novalidate>
+
+    <div class="campo">
+      <label for="nome">Nome *</label>
+      <input
+        id="nome"
+        name="nome"
+        type="text"
+        [(ngModel)]="barraca.nome"
+        required
+        minlength="3"
+        maxlength="100"
+        class="input"
+        [class.input-erro]="errosCampos['nome']"
+      />
+      <small *ngIf="errosCampos['nome']" class="erro-campo">
+        {{ errosCampos['nome'] }}
+      </small>
+    </div>
+
+    <div class="campo">
+      <label for="descricao">Descrição</label>
+      <textarea
+        id="descricao"
+        name="descricao"
+        [(ngModel)]="barraca.descricao"
+        maxlength="500"
+        rows="3"
+        class="input"
+      ></textarea>
+    </div>
+
+    <div class="campo">
+      <label for="tipoBarracaId">Tipo de Barraca *</label>
+      <select
+        id="tipoBarracaId"
+        name="tipoBarracaId"
+        [(ngModel)]="barraca.tipoBarracaId"
+        required
+        class="input"
+        [class.input-erro]="errosCampos['tipoBarracaId']"
+      >
+        <option [ngValue]="undefined" disabled>Selecione um tipo</option>
+        <option *ngFor="let t of tipos" [ngValue]="t.id">
+          {{ t.nome }}
+        </option>
+      </select>
+      <small *ngIf="errosCampos['tipoBarracaId']" class="erro-campo">
+        {{ errosCampos['tipoBarracaId'] }}
+      </small>
+      <small *ngIf="tipos.length === 0" class="aviso">
+        Nenhum tipo cadastrado. Cadastre um tipo antes de criar uma barraca.
+      </small>
+    </div>
+
+    <div class="campo campo-checkbox">
+      <label>
+        <input
+          name="ativo"
+          type="checkbox"
+          [(ngModel)]="barraca.ativo"
+        />
+        Barraca ativa
+      </label>
+    </div>
+
+    <div class="acoes">
+      <button type="button" (click)="cancelar()" class="btn btn-secundario">
+        Cancelar
+      </button>
+      <button
+        type="submit"
+        [disabled]="salvando || tipos.length === 0"
+        class="btn btn-primary"
+      >
+        {{ salvando ? 'Salvando...' : 'Salvar' }}
+      </button>
+    </div>
+
+  </form>
+</div>

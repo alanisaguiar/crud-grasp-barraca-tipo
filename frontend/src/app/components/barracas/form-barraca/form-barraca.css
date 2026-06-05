@@ -1,0 +1,115 @@
+.container {
+  padding: 20px;
+  max-width: 600px;
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+.header h2 {
+  margin: 0;
+}
+
+.campo {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.campo-checkbox {
+  flex-direction: row;
+  align-items: center;
+}
+
+.campo-checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.campo label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.input {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.input-erro {
+  border-color: #dc3545;
+}
+
+.erro-campo {
+  color: #dc3545;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.aviso {
+  color: #856404;
+  font-size: 12px;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+.acoes {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.btn {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+.btn-secundario {
+  background-color: #e9ecef;
+  color: #333;
+}
+
+.btn-secundario:hover:not(:disabled) {
+  background-color: #d3d8dd;
+}
+
+.alert {
+  padding: 12px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.alert-error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}

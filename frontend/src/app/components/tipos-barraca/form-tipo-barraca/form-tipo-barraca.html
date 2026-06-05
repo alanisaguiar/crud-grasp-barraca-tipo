@@ -1,0 +1,55 @@
+<div class="container">
+  <header class="header">
+    <h2>Novo Tipo de Barraca</h2>
+  </header>
+
+  <div *ngIf="mensagemErro" class="alert alert-error">
+    {{ mensagemErro }}
+  </div>
+
+  <form (ngSubmit)="salvar()" #form="ngForm" novalidate>
+
+    <div class="campo">
+      <label for="nome">Nome *</label>
+      <input
+        id="nome"
+        name="nome"
+        type="text"
+        [(ngModel)]="tipo.nome"
+        required
+        maxlength="100"
+        class="input"
+        [class.input-erro]="errosCampos['nome']"
+      />
+      <small *ngIf="errosCampos['nome']" class="erro-campo">
+        {{ errosCampos['nome'] }}
+      </small>
+    </div>
+
+    <div class="campo">
+      <label for="descricao">Descrição</label>
+      <textarea
+        id="descricao"
+        name="descricao"
+        [(ngModel)]="tipo.descricao"
+        maxlength="500"
+        rows="3"
+        class="input"
+        [class.input-erro]="errosCampos['descricao']"
+      ></textarea>
+      <small *ngIf="errosCampos['descricao']" class="erro-campo">
+        {{ errosCampos['descricao'] }}
+      </small>
+    </div>
+
+    <div class="acoes">
+      <button type="button" (click)="cancelar()" class="btn btn-secundario">
+        Cancelar
+      </button>
+      <button type="submit" [disabled]="salvando" class="btn btn-primary">
+        {{ salvando ? 'Salvando...' : 'Salvar' }}
+      </button>
+    </div>
+
+  </form>
+</div>

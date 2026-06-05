@@ -1,0 +1,43 @@
+<div class="container">
+  <header class="header">
+    <h2>Tipos de Barraca</h2>
+    <a routerLink="/tipos-barraca/novo" class="btn btn-primary">+ Novo tipo</a>
+  </header>
+
+  <div *ngIf="mensagemSucesso" class="alert alert-success">
+    {{ mensagemSucesso }}
+  </div>
+
+  <div *ngIf="mensagemErro" class="alert alert-error">
+    {{ mensagemErro }}
+  </div>
+
+  <div *ngIf="carregando" class="loading">Carregando...</div>
+
+  <table *ngIf="!carregando && tipos.length > 0" class="tabela">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tipo of tipos">
+        <td>{{ tipo.id }}</td>
+        <td>{{ tipo.nome }}</td>
+        <td>{{ tipo.descricao || '—' }}</td>
+        <td>
+          <button (click)="remover(tipo)" class="btn btn-danger">
+            Remover
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="!carregando && tipos.length === 0" class="vazio">
+    Nenhum tipo de barraca cadastrado.
+  </p>
+</div>
