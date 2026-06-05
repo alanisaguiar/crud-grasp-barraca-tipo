@@ -172,9 +172,6 @@ if ($LASTEXITCODE -eq 0) {
     Write-Host "  Crie manualmente em: https://github.com/$Repo/projects" -ForegroundColor DarkGray
 }
 
-# ============================================================
-# Resumo final
-# ============================================================
 Write-Host "`n=== Configuracao concluida! ===" -ForegroundColor Cyan
 Write-Host "Acesse seu repositorio para ver o resultado:" -ForegroundColor White
 Write-Host "  https://github.com/$Repo/issues" -ForegroundColor DarkCyan
